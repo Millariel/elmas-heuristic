@@ -15,6 +15,7 @@ module Elmas
       :endpoint,
       :division,
       :base_url,
+      :domain,
       :refresh_token
     ].freeze
 
@@ -38,6 +39,7 @@ module Elmas
     DEFAULT_CONNECTION_OPTIONS = {}.freeze
 
     DEFAULT_BASE_URL = "https://start.exactonline.nl".freeze
+    DEFAULT_DOMAIN = "nl".freeze
 
     # The endpoint that will be used to connect if none is set
     DEFAULT_ENDPOINT = "api/v1".freeze
@@ -91,6 +93,7 @@ module Elmas
       self.response_format    = DEFAULT_FORMAT
       self.user_agent         = DEFAULT_USER_AGENT
       self.refresh_token      = DEFAULT_REFRESH_TOKEN
+      self.domain             = DEFAULT_DOMAIN
     end
   end
 end

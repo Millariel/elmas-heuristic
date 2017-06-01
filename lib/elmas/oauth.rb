@@ -10,7 +10,7 @@ module Elmas
   module OAuth
     def authorize(user_name, password, options = {})
       agent = Mechanize.new
-
+      puts domain
       login(agent, user_name, password, options)
       allow_access(agent)
 
@@ -48,14 +48,16 @@ module Elmas
       options[:response_type] ||= "code"
       options[:redirect_uri] ||= redirect_uri
       params = authorization_params.merge(options)
-      uri = URI("https://start.exactonline.nl/api/oauth2/auth/")
+      url = "https://start.exactonline." + domain + "/api/oauth2/auth/"
+      uri = URI(url)
       uri.query = URI.encode_www_form(params)
       uri.to_s
     end
 
     # Return an access token from authorization
     def get_access_token(code, _options = {})
-      conn = Faraday.new(url: "https://start.exactonline.nl") do |faraday|
+      url = "https://start.exactonline." + domain 
+      conn = Faraday.new(url: url) do |faraday|
         faraday.request :url_encoded
         faraday.adapter Faraday.default_adapter
       end
@@ -80,6 +82,7 @@ module Elmas
     end
 
     def allow_access(agent)
+      puts agent.page.inspect
       return if agent.page.uri.to_s.include?("getpostman")
       form = agent.page.form_with(id: "PublicOAuth2Form")
       button = form.button_with(id: "AllowButton")
