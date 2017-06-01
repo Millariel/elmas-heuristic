@@ -10,7 +10,6 @@ module Elmas
   module OAuth
     def authorize(user_name, password, options = {})
       agent = Mechanize.new
-      puts domain
       login(agent, user_name, password, options)
       allow_access(agent)
 
