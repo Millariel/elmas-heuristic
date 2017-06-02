@@ -15,11 +15,16 @@ module Elmas
     end
 
     def body
+      puts @response
       @response.body
     end
 
     def parsed
       Parser.new(body)
+    end
+
+    def id
+      @response.id
     end
 
     def result
