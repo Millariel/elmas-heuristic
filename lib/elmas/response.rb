@@ -23,7 +23,7 @@ module Elmas
     end
 
     def id
-      @response.params[:id]
+      @response.id
     end
 
     def result
