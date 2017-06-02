@@ -15,7 +15,6 @@ module Elmas
     end
 
     def body
-      puts @response
       @response.body
     end
 
@@ -24,7 +23,7 @@ module Elmas
     end
 
     def id
-      @response.id
+      @response.params[:id]
     end
 
     def result
