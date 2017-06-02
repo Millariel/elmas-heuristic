@@ -23,7 +23,7 @@ module Elmas
     end
 
     def id
-      parsed.id
+      parsed
     end
 
     def result
