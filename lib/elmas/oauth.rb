@@ -81,7 +81,7 @@ module Elmas
     end
 
     def allow_access(agent)
-      puts agent.page.inspect
+      #puts agent.page.inspect
       return if agent.page.uri.to_s.include?("getpostman")
       form = agent.page.form_with(id: "PublicOAuth2Form")
       button = form.button_with(id: "AllowButton")
