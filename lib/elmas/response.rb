@@ -23,7 +23,7 @@ module Elmas
     end
 
     def id
-      @response.id
+      @response.inspect
     end
 
     def result
